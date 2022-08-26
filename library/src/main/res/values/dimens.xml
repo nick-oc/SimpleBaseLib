@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="s8">8sp</dimen>
+    <dimen name="s10">10sp</dimen>
+    <dimen name="s12">12sp</dimen>
+    <dimen name="s14">14sp</dimen>
+    <dimen name="s16">16sp</dimen>
+    <dimen name="s18">18sp</dimen>
+    <dimen name="s20">20sp</dimen>
+    <dimen name="s24">24sp</dimen>
+
+    <dimen name="fill">0dp</dimen>
+    <dimen name="one">1dp</dimen>
+    <dimen name="mini">2dp</dimen>
+    <dimen name="miniE">4dp</dimen>
+    <dimen name="miniS">6dp</dimen>
+    <dimen name="small">8dp</dimen>
+    <dimen name="smallE">12dp</dimen>
+    <dimen name="smallS">14dp</dimen>
+    <dimen name="normal">16dp</dimen>
+    <dimen name="normalE">24dp</dimen>
+    <dimen name="big">32dp</dimen>
+    <dimen name="bigE">40dp</dimen>
+    <dimen name="bigS">48dp</dimen>
+    <dimen name="large">56dp</dimen>
+    <dimen name="largeE">64dp</dimen>
+    <dimen name="largeS">72dp</dimen>
+</resources>

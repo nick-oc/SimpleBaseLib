@@ -1,0 +1,27 @@
+package org.nick.master.library
+
+import android.content.Context
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
+
+open class BaseFragment<T : ViewBinding> : Fragment() {
+
+    lateinit var binding: T
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        initArguments()
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = InjectUtil.injectBinding(requireContext(), container, false)
+        return binding.root
+    }
+
+    open fun initArguments() {}
+
+}
