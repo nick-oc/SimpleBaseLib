@@ -6,11 +6,12 @@ import android.os.Bundle
 import android.view.Gravity
 import android.widget.LinearLayout
 import androidx.viewbinding.ViewBinding
+import org.nick.master.library.utils.InjectUtil
 
 abstract class BaseDialog<B : ViewBinding>(context: Context) : Dialog(context) {
 
     protected val binding: B by lazy {
-        InjectUtil.injectBinding(context)
+        InjectUtil.injectBinding(javaClass.genericSuperclass!!, context)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

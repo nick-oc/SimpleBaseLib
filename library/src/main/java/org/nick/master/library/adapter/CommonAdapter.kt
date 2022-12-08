@@ -2,12 +2,12 @@ package org.nick.master.library.adapter
 
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
-import org.nick.master.library.InjectUtil
+import org.nick.master.library.utils.InjectUtil
 
 abstract class CommonAdapter<B : ViewDataBinding, D> : AbsMultiAdapter<D>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VHolder<B> {
-        val layout: B = InjectUtil.injectBinding(parent.context, parent, false)
+        val layout: B = InjectUtil.injectBinding(javaClass.genericSuperclass!!, parent.context, parent, false)
         return VHolder(layout)
     }
 
