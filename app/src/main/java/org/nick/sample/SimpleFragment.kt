@@ -9,5 +9,9 @@ class SimpleFragment : BaseFragment<FragmentSimpleBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val text = binding.tv.text
         binding.tv.text = "$text test"
+
+        binding.tv.setOnClickListener {
+            SimpleDialog(requireContext()).show()
+        }
     }
 }

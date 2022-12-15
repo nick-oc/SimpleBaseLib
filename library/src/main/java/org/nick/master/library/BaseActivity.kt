@@ -8,7 +8,11 @@ import org.nick.master.library.utils.InjectUtil
 open class BaseActivity<B : ViewBinding> : AppCompatActivity() {
 
     val binding: B by lazy {
-        InjectUtil.injectBinding(javaClass.genericSuperclass!!, this)
+        try {
+            InjectUtil.injectBinding(javaClass.genericSuperclass!!, this)
+        } catch (e: Exception) {
+            InjectUtil.injectBinding(javaClass.superclass.genericSuperclass!!, this)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

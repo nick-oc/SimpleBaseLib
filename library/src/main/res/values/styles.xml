@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomDialog" parent="Theme.AppCompat.Light.Dialog">
+        <!--        <item name="android:windowMinWidthMajor">100%</item>-->
+        <!--        <item name="android:windowMinWidthMinor">100%</item>-->
+        <!--背景透明-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--去除标题-->
+        <!--        <item name="android:windowNoTitle">true</item>-->
+        <!--去除边框-->
+        <!--        <item name="android:windowFrame">@null</item>-->
+        <!--屏幕其他地方变模糊-->
+        <!--        <item name="android:backgroundDimEnabled">true</item>-->
+        <!--悬浮Activity上-->
+        <!--        <item name="android:windowIsFloating">true</item>-->
+        <!--阴影-->
+        <!--        <item name="android:windowIsTranslucent">true</item>-->
+    </style>
+
+</resources>
