@@ -5,12 +5,15 @@ plugins {
 }
 
 android {
+    namespace 'org.nick.master.library'
     compileSdk 32
 
     defaultConfig {
         minSdk 24
         targetSdk 32
 
+        versionCode 20230104
+        versionName "0.0.4"
     }
 
     buildTypes {
@@ -30,7 +33,6 @@ android {
         viewBinding true
         dataBinding true
     }
-    namespace 'org.nick.master.library'
 }
 
 dependencies {

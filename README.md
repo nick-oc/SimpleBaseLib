@@ -31,6 +31,11 @@ android {
 ···
 
 dependencies {
-    implementation 'com.github.nick-oc:SimpleBaseLib:v0.0.1'
+    implementation 'com.github.nick-oc:SimpleBaseLib:0.0.4'
 }
+```
+
+3.混淆
+```
+-keep class 包名.databinding.* {*;}
 ```

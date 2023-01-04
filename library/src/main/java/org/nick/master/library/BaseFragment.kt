@@ -9,7 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import org.nick.master.library.utils.InjectUtil
 
-open class BaseFragment<T : ViewBinding> : Fragment() {
+open class BaseFragment<T : ViewBinding>(private val inflaterT: ((LayoutInflater, ViewGroup?, Boolean) -> T)? = null) :
+    Fragment() {
 
     lateinit var binding: T
 
@@ -19,7 +20,8 @@ open class BaseFragment<T : ViewBinding> : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = InjectUtil.injectBinding(javaClass.genericSuperclass!!, requireContext(), container, false)
+        binding = inflaterT?.invoke(inflater, container, false) ?: InjectUtil
+            .injectBinding(javaClass.genericSuperclass!!, requireContext(), container, false)
         return binding.root
     }
 
