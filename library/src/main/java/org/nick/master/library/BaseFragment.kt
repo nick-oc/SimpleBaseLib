@@ -9,8 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import org.nick.master.library.utils.InjectUtil
 
-open class BaseFragment<T : ViewBinding>(private val inflaterT: ((LayoutInflater, ViewGroup?, Boolean) -> T)? = null) :
-    Fragment() {
+open class BaseFragment<T : ViewBinding>(
+    private val inflaterT: ((LayoutInflater, ViewGroup?, Boolean) -> T)? = null
+) : Fragment() {
 
     lateinit var binding: T
 
