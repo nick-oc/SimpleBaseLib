@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.annotation.StyleRes
 import androidx.viewbinding.ViewBinding
@@ -12,10 +13,15 @@ import org.nick.master.library.utils.InjectUtil
 abstract class BaseDialog<B : ViewBinding>(
     context: Context,
     @StyleRes style: Int = R.style.CustomDialog,
+    inflater: ((LayoutInflater) -> B)? = null
 ) : Dialog(context, style) {
 
     protected val binding: B by lazy {
-        InjectUtil.injectBinding(javaClass.genericSuperclass!!, context)
+        inflater?.invoke(layoutInflater) ?: try {
+            InjectUtil.injectBinding(javaClass.genericSuperclass!!, context)
+        } catch (e: Exception) {
+            InjectUtil.injectBinding(javaClass.superclass.genericSuperclass!!, context)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

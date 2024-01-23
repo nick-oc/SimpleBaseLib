@@ -16,6 +16,16 @@
         <!--        <item name="android:windowIsFloating">true</item>-->
         <!--阴影-->
         <!--        <item name="android:windowIsTranslucent">true</item>-->
+        <!--动画-->
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
+
+    <style name="FullScreenDialog" parent="CustomDialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
 
 </resources>

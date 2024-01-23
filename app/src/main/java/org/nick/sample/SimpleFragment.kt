@@ -7,11 +7,11 @@ import org.nick.sample.databinding.FragmentSimpleBinding
 
 class SimpleFragment : BaseFragment<FragmentSimpleBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val text = binding.tv.text
-        binding.tv.text = "$text test2"
-
-        binding.tv.setOnClickListener {
+        binding.bt1.setOnClickListener {
             SimpleDialog(requireContext()).show()
+        }
+        binding.bt2.setOnClickListener {
+            SimpleFragmentDialog().show(requireActivity(), "测试")
         }
     }
 }
