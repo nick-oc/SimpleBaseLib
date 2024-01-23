@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace 'org.nick.sample'
-    compileSdk 34
+    compileSdk 32
 
     defaultConfig {
         applicationId "org.nick.sample"
         minSdk 24
-        targetSdk 33
+        targetSdk 32
         versionCode 1
         versionName "1.0"
 

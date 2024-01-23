@@ -6,11 +6,11 @@ plugins {
 
 android {
     namespace 'org.nick.master.library'
-    compileSdk 33
+    compileSdk 32
 
     defaultConfig {
         minSdk 24
-        targetSdk 33
+        targetSdk 32
 
         versionCode 20240123
         versionName "1.1.0"
