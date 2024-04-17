@@ -18,14 +18,14 @@ abstract class AbsMultiAdapter<D> : RecyclerView.Adapter<VHolder<*>>() {
     override fun onBindViewHolder(holder: VHolder<*>, position: Int) {
         val item = getItemData(position)
         holder.b.let { binding ->
+            binding.root.setOnClickListener {
+                onItemClickListener?.invoke(item, position)
+            }
             if (binding is ViewDataBinding) {
-                binding.root.setOnClickListener {
-                    onItemClickListener?.invoke(item, position)
-                }
                 binding.setVariable(variableId(), item)
                 binding.executePendingBindings()
-                convert(holder, item, position)
             }
+            convert(holder, item, position)
         }
     }
 

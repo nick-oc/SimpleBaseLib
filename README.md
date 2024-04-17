@@ -34,7 +34,7 @@ android {
 ···
 
 dependencies {
-    implementation 'com.github.nick-oc:SimpleBaseLib:1.1.0'
+    implementation 'com.github.nick-oc:SimpleBaseLib:1.1.2'
 }
 ```
 
