@@ -15,27 +15,23 @@ object LogConfig {
     const val TAG_LOG = "aaa -> "
 
     val isDebug = BuildConfig.DEBUG
-    val logEnable = isDebug
-}
-
-inline fun <reified T : Any> T.llog(msg: String, tag: String = this::class.java.simpleName, e: Throwable? = null) {
-    if (logEnable) Log.i(TAG_LOG + tag, msg, e)
+    var logEnable = isDebug
 }
 
 inline fun <reified T : Any> T.llogi(msg: String, tag: String = this::class.java.simpleName, e: Throwable? = null) {
-    Log.i(TAG_LOG + tag, msg, e)
+    if (logEnable) Log.i(TAG_LOG + tag, msg, e)
 }
 
 inline fun <reified T : Any> T.llogd(msg: String, tag: String = this::class.java.simpleName, e: Throwable? = null) {
-    Log.d(TAG_LOG + tag, msg, e)
+    if (logEnable) Log.d(TAG_LOG + tag, msg, e)
 }
 
 inline fun <reified T : Any> T.lloge(msg: String = "", tag: String = this::class.java.simpleName, e: Throwable? = null) {
-    Log.e(TAG_LOG + tag, msg, e)
+    if (logEnable) Log.e(TAG_LOG + tag, msg, e)
 }
 
 inline fun <reified T : Any> T.llogw(msg: String = "", tag: String = this::class.java.simpleName, e: Throwable? = null) {
-    Log.w(TAG_LOG + tag, msg, e)
+    if (logEnable) Log.w(TAG_LOG + tag, msg, e)
 }
 
 inline fun <reified T : ViewBinding> T.inject(context: Context): T {
@@ -43,8 +39,16 @@ inline fun <reified T : ViewBinding> T.inject(context: Context): T {
     return cls.getMethod("inflate", LayoutInflater::class.java).invoke(null, LayoutInflater.from(context)) as T
 }
 
+infix fun View.show(isShow: Boolean) {
+    if (isShow) show() else gone()
+}
+
 fun View.show() {
     if (visibility != View.VISIBLE) visibility = View.VISIBLE
+}
+
+fun View.hide() {
+    if (visibility != View.INVISIBLE) visibility = View.INVISIBLE
 }
 
 fun View.gone() {

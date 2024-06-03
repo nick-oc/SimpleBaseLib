@@ -4,7 +4,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
-abstract class AbsMultiAdapter<D> : RecyclerView.Adapter<VHolder<*>>() {
+abstract class AbsMultiAdapter<D> : RecyclerView.Adapter<VHolder>() {
 
     protected val data = arrayListOf<D>()
     var onItemClickListener: ((D, Int) -> Unit)? = null
@@ -15,7 +15,7 @@ abstract class AbsMultiAdapter<D> : RecyclerView.Adapter<VHolder<*>>() {
         mRecyclerView = recyclerView
     }
 
-    override fun onBindViewHolder(holder: VHolder<*>, position: Int) {
+    override fun onBindViewHolder(holder: VHolder, position: Int) {
         val item = getItemData(position)
         holder.b.let { binding ->
             binding.root.setOnClickListener {
@@ -29,7 +29,7 @@ abstract class AbsMultiAdapter<D> : RecyclerView.Adapter<VHolder<*>>() {
         }
     }
 
-    abstract fun convert(h: VHolder<*>, item: D, position: Int)
+    abstract fun convert(h: VHolder, item: D, position: Int)
 
     /**
      * 绑定id
@@ -96,4 +96,4 @@ abstract class AbsMultiAdapter<D> : RecyclerView.Adapter<VHolder<*>>() {
     }
 }
 
-class VHolder<B : ViewBinding>(val b: B) : RecyclerView.ViewHolder(b.root)
+open class VHolder(val b: ViewBinding) : RecyclerView.ViewHolder(b.root)
