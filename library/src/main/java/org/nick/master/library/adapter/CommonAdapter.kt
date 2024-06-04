@@ -7,7 +7,7 @@ import org.nick.master.library.utils.InjectUtil
 
 abstract class CommonAdapter<B : ViewDataBinding, D>(
     private val inflaterT: ((LayoutInflater, ViewGroup?, Boolean) -> B)? = null,
-) : AbsMultiAdapter<D>() {
+) : AbsMultiAdapter<D, VHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VHolder {
         val inflater = LayoutInflater.from(parent.context)

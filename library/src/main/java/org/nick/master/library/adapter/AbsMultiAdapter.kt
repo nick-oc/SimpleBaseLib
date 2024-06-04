@@ -3,8 +3,9 @@ package org.nick.master.library.adapter
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import org.nick.master.library.BR
 
-abstract class AbsMultiAdapter<D> : RecyclerView.Adapter<VHolder>() {
+abstract class AbsMultiAdapter<D, H : VHolder> : RecyclerView.Adapter<H>() {
 
     protected val data = arrayListOf<D>()
     var onItemClickListener: ((D, Int) -> Unit)? = null
@@ -15,26 +16,31 @@ abstract class AbsMultiAdapter<D> : RecyclerView.Adapter<VHolder>() {
         mRecyclerView = recyclerView
     }
 
-    override fun onBindViewHolder(holder: VHolder, position: Int) {
+    override fun onBindViewHolder(holder: H, position: Int) {
         val item = getItemData(position)
         holder.b.let { binding ->
             binding.root.setOnClickListener {
                 onItemClickListener?.invoke(item, position)
             }
             if (binding is ViewDataBinding) {
-                binding.setVariable(variableId(), item)
+                val variableId = variableId()
+                if (variableId == 0) throw IllegalArgumentException("使用 ViewDataBinding 时必须重写 variableId() 方法")
+                binding.setVariable(variableId, item)
                 binding.executePendingBindings()
             }
             convert(holder, item, position)
         }
     }
 
-    abstract fun convert(h: VHolder, item: D, position: Int)
+    abstract fun convert(h: H, item: D, position: Int)
 
     /**
+     * 当使用ViewDataBinding时必须重写
      * 绑定id
      */
-    abstract fun variableId(): Int
+    open fun variableId(): Int {
+        return BR._all
+    }
 
     override fun getItemCount(): Int {
         return data.size
