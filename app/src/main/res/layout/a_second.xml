@@ -9,10 +9,51 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/fill"
+        android:background="#e1e1e1"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/ll"
+        app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/i_simple" />
 
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/sw_manager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:text="布局管理" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_count"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="SpanCount"
+            android:inputType="number"
+            android:text="2" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/sw_orientation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:text="横向" />
+
+        <Button
+            android:id="@+id/bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="应用" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

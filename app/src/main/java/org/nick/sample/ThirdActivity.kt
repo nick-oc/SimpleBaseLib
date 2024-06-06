@@ -4,6 +4,7 @@ import org.nick.master.library.BaseActivity
 import org.nick.sample.databinding.AThirdBinding
 
 class ThirdActivity : BaseActivity<AThirdBinding>() {
+    
     private val adapter = SecondAdapter().apply {
         onItemClickListener = { item, _ ->
             SimpleFragmentDialog().show(this@ThirdActivity, item)
