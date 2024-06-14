@@ -4,56 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".SecondActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/fill"
-        android:background="#e1e1e1"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/ll"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/i_simple" />
+        tools:listitem="@layout/i_simple_v" />
 
-    <LinearLayout
-        android:id="@+id/ll"
-        android:layout_width="match_parent"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/bt_add"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_marginEnd="@dimen/smallE"
+        android:layout_marginBottom="@dimen/smallE"
+        android:contentDescription="添加"
+        android:src="@drawable/ic_add_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/sw_manager"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            android:text="布局管理" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_count"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:hint="SpanCount"
-            android:inputType="number"
-            android:text="2" />
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/sw_orientation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            android:text="横向" />
-
-        <Button
-            android:id="@+id/bt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="应用" />
-
-    </LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/bt_add_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/smallE"
+        android:contentDescription="添加"
+        android:src="@drawable/ic_add_24"
+        app:layout_constraintBottom_toBottomOf="@id/bt_add"
+        app:layout_constraintEnd_toStartOf="@id/bt_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

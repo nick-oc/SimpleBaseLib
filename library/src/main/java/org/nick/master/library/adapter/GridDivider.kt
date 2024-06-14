@@ -27,27 +27,46 @@ class GridDivider(
         val childCount = parent.childCount
         var child: View
         var rect: Rect
-        var top: Int
         var left: Int
+        var top: Int
+        var right: Int
         var bottom: Int
         for (i in 0 until childCount) {
             child = parent.getChildAt(i)
-            top = lm.getTopDecorationHeight(child)
             left = lm.getLeftDecorationWidth(child)
-            if (top > 0) {
-                rect = Rect()
-                rect.left = child.left - left
-                rect.right = child.right
-                rect.top = child.top - top
-                rect.bottom = child.top
-                c.drawRect(rect, mPaint)
-            }
+            top = lm.getTopDecorationHeight(child)
+            right = lm.getRightDecorationWidth(child)
+            bottom = lm.getBottomDecorationHeight(child)
             if (left > 0) {
                 rect = Rect()
                 rect.left = child.left - left
                 rect.right = child.left
                 rect.top = child.top - top
-                rect.bottom = child.bottom
+                rect.bottom = child.bottom + bottom
+                c.drawRect(rect, mPaint)
+            }
+            if (top > 0) {
+                rect = Rect()
+                rect.left = child.left - left
+                rect.right = child.right + right
+                rect.top = child.top - top
+                rect.bottom = child.top
+                c.drawRect(rect, mPaint)
+            }
+            if (right > 0) {
+                rect = Rect()
+                rect.left = child.right
+                rect.right = child.right + right
+                rect.top = child.top - top
+                rect.bottom = child.bottom + bottom
+                c.drawRect(rect, mPaint)
+            }
+            if (bottom > 0) {
+                rect = Rect()
+                rect.left = child.left - left
+                rect.right = child.right + right
+                rect.top = child.bottom
+                rect.bottom = child.bottom + bottom
                 c.drawRect(rect, mPaint)
             }
         }
@@ -65,18 +84,21 @@ class GridDivider(
         if (lm is GridLayoutManager) {
             val spanCount = lm.spanCount
             val column = position % spanCount
+
             if (lm.orientation == RecyclerView.VERTICAL) {
+                // 垂直
                 if (position >= spanCount) {
                     outRect.top = space
                 }
-                if (column == 0) return
-                outRect.left = space
+                outRect.left = space * column / spanCount
+                outRect.right = space - (column + 1) * space / spanCount
             } else {
+                // 水平
                 if (position >= spanCount) {
                     outRect.left = space
                 }
-                if (column == 0) return
-                outRect.top = space
+                outRect.top = space * column / spanCount
+                outRect.bottom = space - (column + 1) * space / spanCount
             }
         } else if (lm is LinearLayoutManager) {
             if (position == 0) return

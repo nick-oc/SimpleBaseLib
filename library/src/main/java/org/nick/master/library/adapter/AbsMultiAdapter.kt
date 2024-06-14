@@ -46,39 +46,13 @@ abstract class AbsMultiAdapter<D, H : VHolder> : RecyclerView.Adapter<H>() {
         return data.size
     }
 
-    /**
-     * 上拉加载更多的数据
-     *
-     * @param list
-     */
-    open fun addLoadMoreData(list: List<D>) {
-        val size = data.size
-        data.addAll(list)
-        notifyItemInserted(size)
+    open fun addData(list: List<D>, index: Int = 0) {
+        data.addAll(index, list)
+        notifyItemRangeChanged(index, data.size)
     }
 
-    open fun addLoadMoreData(list: D) {
-        val size = data.size
-        data.add(list)
-        notifyItemInserted(size)
-    }
-
-    /**
-     * 下拉刷新，得到的新数据插入到原数据头部
-     *
-     * @param data
-     */
-    open fun addRefreshData(list: List<D>) {
-        data.addAll(0, list)
-        notifyItemRangeInserted(0, list.size)
-        mRecyclerView.scrollToPosition(0)
-    }
-
-    open fun addRefreshData(list: D) {
-        data.add(0, list)
-        notifyItemInserted(0)
-
-        mRecyclerView.scrollToPosition(0)
+    open fun addDataToEnd(list: List<D>) {
+        addData(list, data.size)
     }
 
     /**

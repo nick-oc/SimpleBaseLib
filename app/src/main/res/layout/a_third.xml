@@ -12,6 +12,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/i_simple" />
+        tools:listitem="@layout/i_simple_h" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
