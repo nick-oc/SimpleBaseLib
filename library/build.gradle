@@ -10,10 +10,10 @@ android {
 
     defaultConfig {
         minSdk 24
-        targetSdk 33
+        targetSdk 34
 
-        versionCode 20240614
-        versionName "1.1.6"
+        versionCode 20241008
+        versionName "1.1.7"
     }
 
     buildTypes {
@@ -37,7 +37,7 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.11.0'
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("com.google.android.material:material:1.12.0")
 
 }

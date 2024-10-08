@@ -5,4 +5,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:tag="feature"
-    tools:context=".AbsCommonActivity" />
+    android:fitsSystemWindows="true"
+    tools:context=".CommonActivity" />

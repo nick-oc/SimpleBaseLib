@@ -14,4 +14,8 @@ class SimpleFragment : BaseFragment<FragmentSimpleBinding>() {
             SimpleFragmentDialog().show(requireActivity(), "测试")
         }
     }
+
+    companion object {
+        val TAG: String = SimpleFragment::class.java.simpleName
+    }
 }

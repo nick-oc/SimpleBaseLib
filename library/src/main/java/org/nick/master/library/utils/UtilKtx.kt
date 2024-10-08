@@ -7,15 +7,13 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import androidx.viewbinding.ViewBinding
-import org.nick.master.library.BuildConfig
 import org.nick.master.library.utils.LogConfig.TAG_LOG
 import org.nick.master.library.utils.LogConfig.logEnable
 
 object LogConfig {
-    const val TAG_LOG = "aaa -> "
+    const val TAG_LOG = "aaa->"
 
-    val isDebug = BuildConfig.DEBUG
-    var logEnable = isDebug
+    var logEnable = false
 }
 
 inline fun <reified T : Any> T.llogi(msg: String, tag: String = this::class.java.simpleName, e: Throwable? = null) {

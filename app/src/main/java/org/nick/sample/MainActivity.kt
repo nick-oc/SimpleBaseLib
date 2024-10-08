@@ -13,7 +13,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             binding.btn.text = "测试${count++}"
         }
         binding.btn1.setOnClickListener {
-            startActivity(Intent(this, SimpleActivity::class.java))
+            startActivity(CommonActivity.build(this, SimpleFragment.TAG))
         }
         binding.btn2.setOnClickListener {
             startActivity(Intent(this, SecondActivity::class.java))
