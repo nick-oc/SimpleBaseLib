@@ -23,11 +23,6 @@ open class BaseActivity<B : ViewBinding>(inflater: ((LayoutInflater) -> B)? = nu
         super.onCreate(savedInstanceState)
         resetWindow()
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
         initData()
     }
 
@@ -35,6 +30,13 @@ open class BaseActivity<B : ViewBinding>(inflater: ((LayoutInflater) -> B)? = nu
         enableEdgeToEdge()
     }
 
-    open fun initData() {}
+    open fun initData() {
+        // 设置系统状态栏Padding
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+    }
 
 }
